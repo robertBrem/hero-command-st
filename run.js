@@ -4,16 +4,6 @@ var containerName = "hero-command";
 var kubernetesName = "hero-command-test";
 var FileWriter = Java.type("java.io.FileWriter");
 
-var deleteDeployment = "kubectl delete deployment " + kubernetesName;
-$EXEC(deleteDeployment);
-print($OUT);
-print($ERR);
-
-var deleteService = "kubectl delete service " + kubernetesName;
-$EXEC(deleteService);
-print($OUT);
-print($ERR);
-
 var deploymentPath = containerName + "-deployment.yml";
 var fw = new FileWriter(deploymentPath);
 fw.write("apiVersion: extensions/v1beta1\n");
@@ -53,8 +43,10 @@ fw.write("  ports:\n");
 fw.write("  - name: main\n");
 fw.write("    port: 8282\n");
 fw.write("    targetPort: 8080\n");
+fw.write("    nodePort: 31080\n");
 fw.write("  selector:\n");
 fw.write("    name: hero-command-test\n");
+fw.write("  type: NodePort\n");
 fw.close();
 
 var startService = "kubectl create -f " + servicePath;

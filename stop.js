@@ -1,13 +1,13 @@
 #!/usr/bin/jjs -fv
 
-var containerName = "hero-command";
+var kubernetesName = "hero-command-test";
 
-var stopHeroCommand = "docker stop " + containerName;
-$EXEC(stopHeroCommand);
+var deleteDeployment = "kubectl delete deployment " + kubernetesName;
+$EXEC(deleteDeployment);
 print($OUT);
 print($ERR);
 
-var rmHeroCommand = "docker rm " + containerName;
-$EXEC(rmHeroCommand);
+var deleteService = "kubectl delete service " + kubernetesName;
+$EXEC(deleteService);
 print($OUT);
 print($ERR);
