@@ -13,7 +13,7 @@ import static org.junit.Assert.assertThat;
 public class HeroResourceIT {
 
     @Rule
-    public JAXRSClientProvider commandProvider = buildWithURI("http://localhost:8282/hero-command/resources/heros");
+    public JAXRSClientProvider commandProvider = buildWithURI("http://hero-command-test:8282/hero-command/resources/heros");
 
     @Test
     public void read() {
