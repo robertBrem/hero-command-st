@@ -64,6 +64,7 @@ print($ERR);
 
 var testUrl = "curl --write-out %{http_code} --silent --output /dev/null http://hero-command-test:8282/hero-command/resources/heros";
 $EXEC(testUrl);
+print($OUT);
 while ($OUT != "200") {
     $EXEC("sleep 1");
     $EXEC(testUrl);
