@@ -13,7 +13,16 @@ import static org.junit.Assert.assertThat;
 public class HeroResourceIT {
 
     @Rule
-    public JAXRSClientProvider commandProvider = buildWithURI("http://hero-command-test:8282/hero-command/resources/heros");
+    public JAXRSClientProvider commandProvider = buildWithURI(getURI());
+
+    public String getURI() {
+        String host = "localhost";
+        String kubernetesHost = EnvironmentVariableGetter.getEnv("KUBERNETES_HOST_NAME");
+        if (kubernetesHost != null && !kubernetesHost.isEmpty()) {
+            host = kubernetesHost;
+        }
+        return "http://" + host + ":8282/hero-command/resources/heros";
+    }
 
     @Test
     public void read() {

@@ -4,6 +4,8 @@ var containerName = "hero-command";
 var kubernetesName = "hero-command-test";
 var FileWriter = Java.type("java.io.FileWriter");
 
+var setEnvVariable = "export KUBERNETES_HOST_NAME=" + kubernetesName;
+
 var deploymentPath = containerName + "-deployment.yml";
 var fw = new FileWriter(deploymentPath);
 fw.write("apiVersion: extensions/v1beta1\n");
@@ -28,7 +30,6 @@ var startHeroCommand = "kubectl create -f " + deploymentPath;
 $EXEC(startHeroCommand);
 print($OUT);
 print($ERR);
-
 
 var servicePath = containerName + "-service.yml";
 var fw = new FileWriter(servicePath);
@@ -56,7 +57,6 @@ print($ERR);
 
 var testUrl = "curl --write-out %{http_code} --silent --output /dev/null http://hero-command-test:8282/hero-command/resources/heros";
 $EXEC(testUrl);
-print($OUT);
 while ($OUT != "200") {
     $EXEC("sleep 1");
     $EXEC(testUrl);
