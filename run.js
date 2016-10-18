@@ -5,6 +5,7 @@ var kubernetesName = "hero-command-test";
 var FileWriter = Java.type("java.io.FileWriter");
 
 var setEnvVariable = "export KUBERNETES_HOST_NAME=" + kubernetesName;
+$EXEC(setEnvVariable);
 
 var deploymentPath = containerName + "-deployment.yml";
 var fw = new FileWriter(deploymentPath);
