@@ -25,7 +25,7 @@ public class HeroResourceIT {
     }
 
     @Test
-    public void read() {
+    public void isRunning() {
         Response response = commandProvider.target().request().get();
         assertThat(response.getStatus(), is(200));
     }
