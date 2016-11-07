@@ -22,6 +22,8 @@ fw.write("      - name: hero-command-test\n");
 fw.write("        image: registry.disruptor.ninja:30500/robertbrem/heros-command:" + $ENV.VERSION + "\n");
 fw.write("        ports:\n");
 fw.write("          - containerPort: 8080\n");
+fw.write("      imagePullSecrets:\n");
+fw.write("      - name: myregistrykey\n");
 fw.close();
 
 var startHeroCommand = "kubectl create -f " + deploymentPath;
