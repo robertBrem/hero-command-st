@@ -19,7 +19,7 @@ fw.write("        name: hero-command-test\n");
 fw.write("    spec:\n");
 fw.write("      containers:\n");
 fw.write("      - name: hero-command-test\n");
-fw.write("        image: robertbrem/heros-command:" + $ENV.VERSION + "\n");
+fw.write("        image: adesso.disruptor.ninja:30500/robertbrem/heros-command:" + $ENV.VERSION + "\n");
 fw.write("        ports:\n");
 fw.write("          - containerPort: 8080\n");
 fw.close();
